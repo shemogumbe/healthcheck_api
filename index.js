@@ -9,10 +9,10 @@ const url = require('url');
 const server = http.createServer(function(request, response){
     
     // get the Url from the request 
-    const parseedUrl = url.parse(request.url, true)
+    const parsedUrl = url.parse(request.url, true)
 
     // get path of the requested resource
-    const path = parseedUrl.pathname
+    const path = parsedUrl.pathname
 
     // trim the path
     const trimmedPath = path.replace(/^\/+|\/+$/g, '')
@@ -23,9 +23,13 @@ const server = http.createServer(function(request, response){
 
     response.end("Welcome To Health checks");
 
+    // get query string
+    const queryStringObject = parsedUrl.query;
+
     
     // log the requested path
     console.log("The request received for " + trimmedPath +' with method ' + method)
+    console.log(queryStringObject)
 })
 
 // serve and listen on a port
