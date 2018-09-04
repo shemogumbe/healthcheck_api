@@ -18,11 +18,14 @@ const server = http.createServer(function(request, response){
     const trimmedPath = path.replace(/^\/+|\/+$/g, '')
     console.log(trimmedPath)
 
+    // get request method
+    const method = request.method.toLocaleLowerCase()
+
     response.end("Welcome To Health checks");
 
     
     // log the requested path
-    console.log("The request received for " + trimmedPath)
+    console.log("The request received for " + trimmedPath +' with method ' + method)
 })
 
 // serve and listen on a port
